@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #10B981;
+  --color-primary-dark: #059669;
+  --color-charcoal: #171717;
+  --color-cream: #F5F1E8;
+  --color-muted: #737373;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f1e8;
+  color: #171717;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+html.dark body {
+  background-color: #171717;
+  color: #f5f1e8;
+}
+
+html:not(.ready) * {
+  transition: none !important;
+}
+
+html.ready * {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+@layer utilities {
+  .dark .bg-white { background-color: #1f1f1f; }
+  .dark .bg-cream { background-color: #171717; }
+  .dark .bg-cream\/50, .dark .bg-cream\/70 { background-color: #262626; }
+  .dark .text-charcoal { color: #f5f1e8; }
+  .dark .border-stone-200, .dark .border-stone-200\/80, .dark .border-stone-100 { border-color: rgba(255, 255, 255, 0.1); }
+  .dark .bg-stone-100 { background-color: #262626; }
+  .dark .divide-stone-100 > :not(:last-child) { border-color: rgba(255, 255, 255, 0.1); }
+}
+
+button,
+a {
+  font-family: inherit;
+}
